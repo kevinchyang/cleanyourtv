@@ -5,5 +5,6 @@
   "wallpaper_dim": 25,
   "wallpaper_true_color": false,
   "wallpaper_captions": false,
+  "dock_opacity": 30,
   "home_idle_clock_minutes": 30
 }
