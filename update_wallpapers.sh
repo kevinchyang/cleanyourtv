@@ -39,8 +39,8 @@ cp -r "$WIN_SRC"/* "$WP_DIR"/
 IMAGE_COUNT=$(ls -1 "$WP_DIR" | wc -l)
 echo "已複製 $IMAGE_COUNT 張新桌布。"
 
-# 5. 確認並寫入標準偏好設定
-echo "[4/6] 寫入偏好設定 (手動輪播、Dock 30% 透明度、30 分鐘待機)..."
+# 5. 寫入標準偏好設定 (4 小時輪播、Dock 30% 透明度、30 分鐘待機)
+echo "[4/6] 寫入偏好設定..."
 cat << 'CONFIG_EOF' > "$THEME_DIR/config.json"
 {
   "wallpaper": true,
@@ -62,11 +62,11 @@ TV_HOST=$TV_IP ./tools/theme.sh themes/mytheme
 # 7. Git 提交並同步至 GitHub
 echo "[6/6] 提交變更至 Git 並推送到 GitHub..."
 git add -A
-git commit -m "Auto-sync wallpapers: $IMAGE_COUNT images, dock opacity 30%, idle clock 30m" || echo "無變更需要 commit"
+git commit -m "Update wallpapers and config: 240m rotation, 30% dock opacity, 30m idle clock" || echo "無變更需要 commit"
 git push origin $(git rev-parse --abbrev-ref HEAD)
 
 echo "=========================================="
-echo " 全部步驟執行完畢！電視已更新並套用新畫面。"
+echo " 部署完成！"
 echo "=========================================="
-echo "--- 電視端目前桌布清單 ---"
-adb shell "ls -la /sdcard/theme/wallpapers/"
+echo "--- 電視端目前生效設定 ---"
+adb shell "cat /sdcard/theme/config.json"
