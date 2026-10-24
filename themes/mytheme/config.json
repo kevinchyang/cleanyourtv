@@ -1,0 +1,9 @@
+{
+  "wallpaper": true,
+  "wallpaper_rotation_minutes": 0,
+  "wallpaper_order": "shuffle",
+  "wallpaper_dim": 25,
+  "wallpaper_true_color": false,
+  "wallpaper_captions": false,
+  "home_idle_clock_minutes": 15
+}
